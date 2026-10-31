@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>BruteCraft</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='src/web/main.css'>
+    <link rel="icon" type="image/png" href="src/web/images/professions/armouring.png" />
+
+    <meta property="og:title" content="BruteCraft" />
+    <meta property="og:description" content="A tool to generate the most ideal recipes for WynnCraft." /> 
+    <meta property="og:image" content="src/web/images/professions/armouring.png" />
+    <meta property="og:url" content="index.html" />
+    <meta property="og:site_name" content="BruteCraft" />
+    <meta property="og:type" content="website" />
+    
+    <meta name="description" content="A tool to generate the most ideal recipes for WynnCraft.">
+    <meta name="keywords" content="brutecraft, wynncraft, crafting, generator, warze, recipe, recipes, crafting recipe, crafting recipes, crafter">
+    <meta name="author" content="Warze">
+
+    <meta name="theme-color" content="#ffec80">
+</head>
+<body>
+    <div id="scroller">
+        <h1 id="title">BruteCraft</h1>
+        <main>
+            <section id="profession">
+                <h2>Profession:</h2>
+                <div id="professionContainer"></div>
+            </section>
+            <hr>
+            <section id="recipeLevel">
+                <h2>Recipe Level:</h2>
+                <div id="recipeLevelContainer">
+                    <input type="range" id="recipeLevelRange" min="0">
+                    <span id="recipeLevelText">117-119</span>
+                </div>
+            </section>
+            <hr>
+            <section id="materialQuality">
+                <h2>Material Quality:</h2>
+            </section>
+            <hr>
+            <section id="scoringSystem">
+                <h2>Scoring System:</h2>
+                <div id="scoringSystemInputContainer">
+                    <input placeholder="Enter Identification" id="scoringSystemInput" list="identificationsInputList">
+                    <datalist id="identificationsInputList"></datalist>
+                </div>
+                <div id="scoringSystemDropdownContainer">
+                    <select id="identificationsDropdownList"></select>
+                </div>
+                <div id="scoringItems">
+                </div>
+            </section>
+            <hr>
+            <section id="limits">
+                <h2>Limits:</h2>
+                <div id="limitItems">
+                </div>
+            </section>
+            <hr>
+            <details id="bannedIngs">
+                <summary>Ingredient Pool:</summary> 
+                <div id="bannedIngItems">
+                </div>
+            </details>
+            <hr>
+            <details id="advanced">
+                <summary>Advanced:</summary>
+                <div class="advancedOption">
+                    <p data-tooltip="(Max * Score) instead of (Min + Max) * Score / 2">[?] Assume best rolls for scoring:</p>
+                    <input id="assumeBestRolls" type="checkbox" checked="false">
+                </div>
+                <div class="advancedOption">
+                    <p data-tooltip="(Duration * Charges) instead of just (Duration)">[?] Consider charges for duration scoring:</p>
+                    <input id="considerCharges" type="checkbox" checked="true">
+                </div>
+                <div class="advancedOption">
+                    <p data-tooltip="Ideal for reverse engineering recipes">[?] Only use ingredients with specified IDs:</p>
+                    <input id="onlyAllowSpecifiedIDs" type="checkbox" checked="false">
+                </div>
+                <div class="advancedOption">
+                    <p data-tooltip="Filters out weak ingredients not present in endgame builds (Experimental)">[?] Only use good ingredients:</p>
+                    <input id="filterOutWeakIngs" type="checkbox" checked="false">
+                </div>
+                <div class="advancedOption">
+                    <p>Generations: <span>300</span></p>
+                    <input id="genCount" type="range" min="10" max="1000" value="300" step="10">
+                </div>
+                <div class="advancedOption">
+                    <p>Subjects per Generation: <span>1000</span></p>
+                    <input id="subjectsPerGen" type="range" min="10" max="5000" value="1000" step="10">
+                </div>
+                <p>Approximated Time: <span id="approxTime">3</span> seconds for <span id="recipeCount">300000</span> recipes</p>
+            </details>
+            <hr>
+            <button id="startButton">Start!</button>
+            <div id="progress"></div>
+            <div id="recipeResult" class="itemBox" style="display: none">
+            </div>
+        </main>
+        <footer>
+            Made with ♥ by <a href="https://warze.org/">Warze</a>
+            <br>
+            <span>
+                BruteCraft is not affiliated with Mojang AB, Minecraft or WynnCraft in any way.
+            </span>
+        </footer>
+    </div>
+    <div id="tooltip" class="itemBox" style="display: none"></div>
+    <script src='src/web/main.js' type="module"></script>
+</body>
+</html>
